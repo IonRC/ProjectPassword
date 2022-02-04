@@ -1,3 +1,95 @@
-body{
-    color: lightgray;
+body {
+    background-color: #00a5e8;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    margin: 0;
+    /*font-family: 'Roboto', sans-serif;*/
+    font-weight: normal;
 }
+
+h3{
+    margin: 0;
+}
+
+.container {
+    background-color: #000834;
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 330px;
+
+}
+
+.title{
+    font-weight: bold;
+    margin: 0;
+    padding-bottom: 20px;
+    font-size: 22px;
+    text-align: left;
+}
+
+.text-block {
+    text-align: center;
+    padding: 16px 0;
+    margin-bottom: 6px;
+
+}
+
+.bg-dark-blue {
+    background-color: #20264b;
+    border-radius: 5px;
+}
+
+.py-10 {
+    padding: 8px 9px 8px 16px;
+    margin-bottom: 6px;
+}
+
+#characterLength {
+    width: 100%;
+}
+
+.between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.generate-btn{
+    background-image: linear-gradient(to right, #708be8 0%, #7c74cd 51%, #8263b5  100%);
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+.label-text{
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #71758c;
+}
+
+.character-length{
+    display: flex;
+    font-size: 14px;
+}
+
+.pl-4 {
+    padding-right: 8px;
+}
+
+.pr-32 {
+    padding-left: 8px;
+}
+
+
+
+
