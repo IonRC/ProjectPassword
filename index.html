@@ -12,12 +12,11 @@
 <div class="container">
     <h1 class="title">Password Generator</h1>
     <div class="text-block bg-dark-blue">
-        sfs
     </div>
     <h3 class="label-text">Length</h3>
     <div class="character-length py-10 bg-dark-blue">
         <span class="pl-4">4</span>
-        <input type="range" min="1" max="32" id="characterLength">
+        <input type="range" min="4" max="32" id="characterLength">
         <span class="pr-32">32</span>
     </div>
     <h3 class="label-text">
@@ -25,19 +24,31 @@
     </h3>
     <div class="uppercase bg-dark-blue py-10 between">
         <label for="includeUpper">Include Uppercase</label>
-        <input type="checkbox" id="includeUpper">
+        <label class="switch">
+            <input type="checkbox" id="includeUpper">
+            <span class="slider round"></span>
+        </label>
     </div>
     <div class="lowercase bg-dark-blue py-10 between">
         <label for="includeLower">Include Lowercase</label>
-        <input type="checkbox" id="includeLower">
+        <label class="switch">
+            <input type="checkbox" id="includeLower">
+            <span class="slider round"></span>
+        </label>
     </div>
     <div class="numbers bg-dark-blue py-10 between">
         <label for="includeNumbers">Include Numbers</label>
-        <input type="checkbox" id="includeNumbers">
+        <label class="switch">
+            <input type="checkbox" id="includeNumbers">
+            <span class="slider round"></span>
+        </label>
     </div>
     <div class="symbols bg-dark-blue py-10 between">
         <label for="includeSymbols">Include Symbols</label>
-        <input type="checkbox" id="includeSymbols">
+        <label class="switch">
+            <input type="checkbox" id="includeSymbols">
+            <span class="slider round"></span>
+            </label>
     </div>
     <div class="submit">
         <button type="submit" class="generate-btn">Generate Password</button>
