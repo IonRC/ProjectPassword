@@ -1,19 +1,36 @@
 const generateBtn = document.querySelector('.generate-btn');
-const inputTarget = document.querySelector('.text-block');
+const inputTarget = document.querySelector('.passwordText');
 const characterRange = document.getElementById('characterLength');
 const firstCheckBox = document.getElementById('includeUpper');
 const secondCheckBox = document.getElementById('includeLower');
 const thirdCheckBox = document.getElementById('includeNumbers');
 const forthCheckBox = document.getElementById('includeSymbols');
+const copyBtn = document.querySelector('.clickToCopy');
+const randomCheckedBox = document.querySelectorAll('.search');
 
-let numbers = '1234567890';
-let upperCase = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-let lowerCase = 'zxcvbnmlkjhgfdsapoiuytrewq';
-let symbols = '!@#$%^&*_+><?';
+const numbers = '1234567890';
+const upperCase = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+const lowerCase = 'zxcvbnmlkjhgfdsapoiuytrewq';
+const symbols = '!@#$%^&*_+><?';
 let passwordLength = '';
 let passwordValue = '';
-
 let concatCharacters = '';
+
+const randomBox = (min, max) =>{
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+const randomNumber = randomBox(0, 3);
+
+const checked = () => {
+    randomCheckedBox[randomNumber].checked = true
+}
+checked();
+
+function updateLength() {
+    document.getElementById('range_count').innerText =
+        document.getElementById("characterLength").value;
+}
+updateLength();
 
 
 const createPassword = () =>{
@@ -24,10 +41,20 @@ const createPassword = () =>{
     concatCharacters += forthCheckBox.checked ? symbols : '';
     passwordValue = '';
     for (let i = 0; i < passwordLength; i++) {
-        let number = Math.floor(Math.random() * concatCharacters.length);
+        const number = Math.floor(Math.random() * concatCharacters.length);
         passwordValue += concatCharacters.substring(number, number + 1);
     }
     inputTarget.textContent = passwordValue;
+    if (concatCharacters.length > 0){
+        copyBtn.classList.add('show');
+    } else {
+        copyBtn.classList.add('hidden')
+    }
     concatCharacters = '';
 }
 generateBtn.addEventListener('click', createPassword);
+
+copyBtn.addEventListener('click' , ()=> {
+    navigator.clipboard.writeText(inputTarget.innerText).then();
+})
+

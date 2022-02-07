@@ -38,6 +38,7 @@ h3{
     margin-bottom: 6px;
     min-height: 18px;
     font-size: 14px;
+    position: relative;
 }
 
 .bg-dark-blue {
@@ -150,6 +151,23 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+.clickToCopy {
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    color: #71758c;
+    cursor: pointer;
+    display: none;
+}
+
+.show{
+    display: block;
+}
+
+.hidden {
+    display: none;
 }
 
 
