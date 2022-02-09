@@ -1,10 +1,5 @@
 const generateBtn = document.querySelector('.generate-btn');
 const inputTarget = document.querySelector('.passwordText');
-const characterRange = document.getElementById('characterLength');
-const firstCheckBox = document.getElementById('includeUpper');
-const secondCheckBox = document.getElementById('includeLower');
-const thirdCheckBox = document.getElementById('includeNumbers');
-const forthCheckBox = document.getElementById('includeSymbols');
 const copyBtn = document.querySelector('.clickToCopy');
 const randomCheckedBox = document.querySelectorAll('.search');
 
@@ -12,7 +7,8 @@ const numbers = '1234567890';
 const upperCase = 'QWERTYUIOPASDFGHJKLZXCVBNM';
 const lowerCase = 'zxcvbnmlkjhgfdsapoiuytrewq';
 const symbols = '!@#$%^&*_+><?';
-let passwordLength = '';
+const checkBoxes = [upperCase, lowerCase, numbers, symbols];
+
 let passwordValue = '';
 let concatCharacters = '';
 
@@ -32,29 +28,34 @@ function updateLength() {
 }
 updateLength();
 
-
 const createPassword = () =>{
-    passwordLength = characterRange.value;
-    concatCharacters += firstCheckBox.checked ? upperCase : '';
-    concatCharacters += secondCheckBox.checked ? lowerCase : '';
-    concatCharacters += thirdCheckBox.checked ? numbers : '';
-    concatCharacters += forthCheckBox.checked ? symbols : '';
+    let randomIndexCheck = [];
+    randomCheckedBox.forEach((elem, index) =>{
+        if (elem.checked){
+            randomIndexCheck.push(index);
+        }
+    });
+
+    checkBoxes.forEach((elem, index) =>{
+        console.log(checkBoxes)
+        randomIndexCheck.forEach((elemCheck, indexCheck) =>{
+            console.log(randomIndexCheck)
+            if (elemCheck === index){
+                concatCharacters += elem;
+            }
+        })
+    });
+    passwordValue = concatCharacters.split('').sort(function(){return 0.5-Math.random()}).join('');
+    let sliceNum = document.getElementById("characterLength").value;
+    inputTarget.textContent = passwordValue.slice(0, sliceNum);
+    if (document.getElementById("characterLength").value.length > passwordValue.length){
+        passwordValue += passwordValue
+    }
     passwordValue = '';
-    for (let i = 0; i < passwordLength; i++) {
-        const number = Math.floor(Math.random() * concatCharacters.length);
-        passwordValue += concatCharacters.substring(number, number + 1);
-    }
-    inputTarget.textContent = passwordValue;
-    if (concatCharacters.length > 0){
-        copyBtn.classList.add('show');
-    } else {
-        copyBtn.classList.add('hidden')
-    }
     concatCharacters = '';
 }
 generateBtn.addEventListener('click', createPassword);
 
 copyBtn.addEventListener('click' , ()=> {
     navigator.clipboard.writeText(inputTarget.innerText).then();
-})
-
+});
